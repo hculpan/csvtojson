@@ -53,17 +53,17 @@ func convertToCleric(rec []string) (string, error) {
 	}
 
 	spell := ClericSpell{
-		Level:        rec[0],
-		Name:         rec[1],
-		Reversible:   rec[2],
-		Material:     rec[3],
-		Sphere:       rec[4],
-		Range:        rec[5],
+		Level:        properTitle(rec[0]),
+		Name:         properTitle(rec[1]),
+		Reversible:   properTitle(rec[2]),
+		Material:     properTitle(rec[3]),
+		Sphere:       properTitle(rec[4]),
+		Range:        properTitle(rec[5]),
 		Components:   rec[6],
-		CastingTime:  rec[7],
-		Duration:     rec[8],
-		AreaOfEffect: rec[9],
-		SavingThrow:  rec[10],
+		CastingTime:  properTitle(rec[7]),
+		Duration:     properTitle(rec[8]),
+		AreaOfEffect: properTitle(rec[9]),
+		SavingThrow:  properTitle(rec[10]),
 	}
 
 	result, err := json.MarshalIndent(spell, "  ", "  ")
@@ -80,17 +80,17 @@ func convertToWizard(rec []string) (string, error) {
 	}
 
 	spell := WizardSpell{
-		Level:        rec[0],
-		Name:         rec[1],
-		Reversible:   rec[2],
-		School:       rec[3],
-		Range:        rec[4],
+		Level:        properTitle(rec[0]),
+		Name:         properTitle(rec[1]),
+		Reversible:   properTitle(rec[2]),
+		School:       properTitle(rec[3]),
+		Range:        properTitle(rec[4]),
 		Components:   rec[5],
-		Material:     rec[6],
-		CastingTime:  rec[7],
-		Duration:     rec[8],
-		AreaOfEffect: rec[9],
-		SavingThrow:  rec[10],
+		Material:     properTitle(rec[6]),
+		CastingTime:  properTitle(rec[7]),
+		Duration:     properTitle(rec[8]),
+		AreaOfEffect: properTitle(rec[9]),
+		SavingThrow:  properTitle(rec[10]),
 	}
 
 	result, err := json.MarshalIndent(spell, "  ", "  ")
@@ -99,6 +99,21 @@ func convertToWizard(rec []string) (string, error) {
 	}
 
 	return string(result), nil
+}
+
+func properTitle(input string) string {
+	words := strings.Fields(strings.ToLower(input))
+	smallwords := " a an on the to "
+	for index, word := range words {
+		word = strings.Replace(word, "&", "and", -1)
+		if strings.Contains(smallwords, " "+word+" ") {
+			words[index] = word
+		} else {
+			words[index] = strings.Title(word)
+		}
+	}
+
+	return strings.Join(words, " ")
 }
 
 func main() {
@@ -164,11 +179,24 @@ func main() {
 
 	datawriter.WriteString("[\n")
 	for i, data := range spells {
-		_, _ = datawriter.WriteString(data)
+		_, err = datawriter.WriteString(data)
+		if err != nil {
+			fmt.Println(err)
+			return
+		}
+
 		if i == len(spells)-1 {
-			_, _ = datawriter.WriteString("\n")
+			_, err = datawriter.WriteString("\n")
+			if err != nil {
+				fmt.Printf("ERROR line %d: %+s\n", row, err)
+				return
+			}
 		} else {
-			_, _ = datawriter.WriteString(",\n")
+			_, err = datawriter.WriteString(",\n")
+			if err != nil {
+				fmt.Printf("ERROR line %d: %+s\n", row, err)
+				return
+			}
 		}
 	}
 	datawriter.WriteString("]\n")
