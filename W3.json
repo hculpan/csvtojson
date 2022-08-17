@@ -235,7 +235,7 @@
   },
   {
     "level": "3",
-    "name": "Leomund'S Tiny Hut",
+    "name": "Leomund's Tiny Hut",
     "reversible": "",
     "school": "Alteration",
     "range": "0",
@@ -261,7 +261,7 @@
   },
   {
     "level": "3",
-    "name": "Melf'S Minute Meteors",
+    "name": "Melf's Minute Meteors",
     "reversible": "",
     "school": "Evocation",
     "range": "70yds + 10yds / Level",
@@ -396,7 +396,7 @@
     "school": "Song",
     "range": "30yds",
     "components": "VM",
-    "material": "a Snake'S Tongue And a Bit Of Honeycomb Or a Drop Of Sweet Oil",
+    "material": "a Snake's Tongue And a Bit Of Honeycomb Or a Drop Of Sweet Oil",
     "casting_time": "3",
     "duration": "1hr + 1 Hr / Level",
     "area_of_effect": "1 Creature",

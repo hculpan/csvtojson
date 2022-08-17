@@ -170,7 +170,7 @@
   },
   {
     "level": "2",
-    "name": "Fool'S Gold",
+    "name": "Fool's Gold",
     "reversible": "",
     "school": "Alteration",
     "range": "10yds",
@@ -287,7 +287,7 @@
   },
   {
     "level": "2",
-    "name": "Leomund'S Trap",
+    "name": "Leomund's Trap",
     "reversible": "",
     "school": "Illusion",
     "range": "Touch",
@@ -339,12 +339,12 @@
   },
   {
     "level": "2",
-    "name": "Melf'S Acid Arrow",
+    "name": "Melf's Acid Arrow",
     "reversible": "",
     "school": "Conjurer",
     "range": "180yds",
     "components": "VSM",
-    "material": "a Dart, Powdered Rhubarb Leaf And an Adder'S Stomach",
+    "material": "a Dart, Powdered Rhubarb Leaf And an Adder's Stomach",
     "casting_time": "2",
     "duration": "Special",
     "area_of_effect": "1 Target",
@@ -508,7 +508,7 @@
   },
   {
     "level": "2",
-    "name": "Tasha'S Uncontrollable Hideous Laughter",
+    "name": "Tasha's Uncontrollable Hideous Laughter",
     "reversible": "",
     "school": "Enchantment",
     "range": "60yds",

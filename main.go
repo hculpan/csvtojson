@@ -111,6 +111,7 @@ func properTitle(input string) string {
 		} else {
 			words[index] = strings.Title(word)
 		}
+		words[index] = strings.Replace(words[index], "'S", "'s", -1)
 	}
 
 	return strings.Join(words, " ")
